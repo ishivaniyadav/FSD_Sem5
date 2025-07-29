@@ -1,6 +1,5 @@
 const taskService = require('../services/taskService');
 const { taskSchema } = require('../validators/taskValidator');
-
 const getAllTasks = (req, res) => {
   const tasks = taskService.getTasks();
   res.json(tasks);
