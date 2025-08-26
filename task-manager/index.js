@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
 app.use('/tasks', taskRoutes);
 
 const PORT = 3000;
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
