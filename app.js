@@ -11,12 +11,10 @@ app.get('/', (req, res) => {
   res.send('Welcome to the One-File Node.js App!');
 });
 
-
 app.get('/greet', (req, res) => {
   const name = req.query.name || 'Guest';
   res.json({ message: `Hello, ${name}!` });
 });
-
 
 app.use((req, res) => {
   res.status(404).json({ error:'Route not found' });
