@@ -1,6 +1,5 @@
 const readline = require('readline-sync');
 const fs = require('fs');
-
 const choice = readline.question("Enter your choice (1-5): ");
 
 switch (choice) {
@@ -33,3 +32,4 @@ switch (choice) {
         console.log('Invalid choice');
         break;
 }
+
