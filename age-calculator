@@ -24,11 +24,9 @@ app.post('/calculate', (req, res) => {
 
   let age = today.getFullYear() - birth.getFullYear();
   const m = today.getMonth() - birth.getMonth();
-
   if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
     age--;
   }
-
   res.json({ birthdate, age });
 });
 
