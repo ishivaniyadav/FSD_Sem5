@@ -3,7 +3,6 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-
 app.get('/', (req, res) => {
   res.send('Welcome to the BMI Calculator API. Use POST /bmi with weight and height.');
 });
