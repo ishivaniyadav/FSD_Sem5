@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-
 const jokes = [
   "Why don’t scientists trust atoms? Because they make up everything!",
   "Why did the computer show up at work late? It had a hard drive.",
