@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ecommerce Express</title>
+</head>
+<body>
+  <h1>Products</h1>
+  <style>
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-family: Arial, sans-serif;
+    }
+    #products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 32px;
+      font-family: Arial, sans-serif;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      padding: 20px;
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+    .product-card img {
+      border-radius: 8px;
+      margin-bottom: 12px;
+      width: 150px;
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.2em;
+    }
+    .product-card p {
+      margin: 0 0 12px 0;
+      color: #333;
+    }
+    .product-card button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.2s;
+    }
+    .product-card button:hover {
+      background: #0056b3;
+    }
+  </style>
+
+  <div id="products"></div>
+
+  <script>
+    fetch('http://localhost:5000/products')
+      .then(res => res.json())
+      .then(products => {
+        const container = document.getElementById('products');
+        products.forEach(product => {
+          const div = document.createElement('div');
+          div.className = 'product-card';
+          div.innerHTML = `
+            <img src="${product.photo}" alt="${product.name}" />
+            <h3>${product.name}</h3>
+            <p>Price: $${product.price}</p>
+            <button onclick="buyProduct('${product._id}')">Buy Product</button>
+          `;
+          container.appendChild(div);
+        });
+      });
+
+    function buyProduct(id) {
+      fetch(`http://localhost:5000/products/buy/${id}`, { method: 'POST' })
+        .then(res => res.json())
+        .then(data => alert(data.message || 'Purchased!'))
+        .catch(() => alert('Error purchasing product'));
+    }
+  </script>
+</body>
+</html>
