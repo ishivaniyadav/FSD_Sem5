@@ -13,7 +13,6 @@
             </a>
         </div>
         <nav class="navbar">
-            
             <a href="#">Men</a>
             <a href="#">Women</a>
             <a href="#">Kids</a>
