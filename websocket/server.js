@@ -1,13 +1,24 @@
 // server.js
+const express = require("express");
+const path = require("path");
 const WebSocket = require("ws");
 
-// Create a WebSocket server on port 8080
-const wss = new WebSocket.Server({ port: 8080 });
+const app = express();
+const PORT = 3000;
+
+// Serve static files (our chat page)
+app.use(express.static(path.join(__dirname, "public")));
+
+const server = app.listen(PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}`)
+);
+
+// WebSocket server
+const wss = new WebSocket.Server({ server });
 
 wss.on("connection", (ws) => {
-  console.log("New client connected successfully");
+  console.log("New client connected");
 
-  // When a message is received
   ws.on("message", (message) => {
     console.log(`Received: ${message}`);
 
@@ -19,11 +30,5 @@ wss.on("connection", (ws) => {
     });
   });
 
-  // On disconnect
-  ws.on("close", () => {
-    console.log("Client disconnected");
-  });
+  ws.on("close", () => console.log("Client disconnected"));
 });
-
-//Display message that sever runs successfully
-console.log("WebSocket server running on ws://localhost:8080");
