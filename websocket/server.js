@@ -1,12 +1,12 @@
 // server.js
 const express = require("express");
 const path = require("path");
-const WebSocket = require("ws");
+const WebSocket = require("ws"); 
 
 const app = express();
 const PORT = 3000;
 
-// Serve static files (our chat page)
+// Serve static files (our chat page) 
 app.use(express.static(path.join(__dirname, "public")));
 
 const server = app.listen(PORT, () =>
