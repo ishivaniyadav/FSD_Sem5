@@ -38,8 +38,7 @@ function loadUsers() {
 function openChat(user) {
   currentChatUser = user;
   document.getElementById("chatUserName").innerText = `${user.emoji || "👤"} ${user.displayName}`;
-  document.getElementById("chatStatus").innerText = user.online ? "Online" : "Last seen " + (user.lastSeen ? new Date(user.lastSeen).toLocaleString() : "recently");
-
+  document.getElementById("chatStatus").innerText = user.online ? "Online" : "Last seen " + (user.lastSeen ? new Date(user.lastSeen).toLocaleString() : "recently")
   fetch(`/api/messages/${user.id}`).then(r => r.json()).then(data => {
     const chat = document.getElementById("chatMessages");
     chat.innerHTML = "";
@@ -63,7 +62,6 @@ document.getElementById("sendBtn").onclick = () => {
   input.value = "";
   socket.emit("stop_typing", { to: currentChatUser.id });
 };
-
 document.getElementById("messageInput").addEventListener("input", () => {
   if (currentChatUser) socket.emit("typing", { to: currentChatUser.id });
   setTimeout(() => {
@@ -104,3 +102,4 @@ document.getElementById("switchAccount").onclick = () => {
     window.location.href = "/login.html";
   });
 };
+ 
