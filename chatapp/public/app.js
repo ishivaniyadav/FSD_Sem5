@@ -62,6 +62,7 @@ document.getElementById("sendBtn").onclick = () => {
   input.value = "";
   socket.emit("stop_typing", { to: currentChatUser.id });
 };
+
 document.getElementById("messageInput").addEventListener("input", () => {
   if (currentChatUser) socket.emit("typing", { to: currentChatUser.id });
   setTimeout(() => {
@@ -99,6 +100,7 @@ socket.on("user_status", ({ userId, online, lastSeen }) => {
 // Switch account
 document.getElementById("switchAccount").onclick = () => {
   fetch("/api/logout", { method: "POST" }).then(() => {
+    
     window.location.href = "/login.html";
   });
 };
