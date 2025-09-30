@@ -13,7 +13,6 @@ app.post('/bmi', (req, res) => {
   if (!weight || !height || weight <= 0 || height <= 0) {
     return res.status(400).json({ error: 'Provide valid weight (kg) and height (cm).' });
   }
-
   const heightInMeters = height / 100;
   const bmi = weight / (heightInMeters * heightInMeters);
   let status = '';
