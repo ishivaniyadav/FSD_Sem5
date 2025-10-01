@@ -12,7 +12,6 @@ exports.register = async (req, res, next) => {
     if (!name || !email || !password) {
       return next(new ErrorResponse('Please provide name, email and password', 400));
     }
-
     // create user
     const user = await User.create({ name, email, password });
     sendTokenResponse(user, 200, res);
