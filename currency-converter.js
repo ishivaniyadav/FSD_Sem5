@@ -21,7 +21,6 @@ app.get('/convert', (req, res) => {
   if (!from || !to || !amount) {
     return res.status(400).json({ error: 'Please provide from, to, and amount parameters.' });
   }
-
   const fromCurrency = from.toUpperCase();
   const toCurrency = to.toUpperCase();
   const amt = parseFloat(amount);
