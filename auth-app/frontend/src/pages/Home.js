@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 function Home() {
   const navigate = useNavigate();
@@ -9,8 +10,9 @@ function Home() {
   };
 
   return (
-    <div>
-      <h2>Welcome to Home Page!</h2>
+    <div className="home-container">
+      <h2>Welcome to Homepage</h2>
+      <p>You are successfully logged in.</p>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
