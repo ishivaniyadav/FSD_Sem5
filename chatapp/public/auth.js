@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
       else alert(data.error);
     });
   }
-
   if (registerForm) {
     registerForm.addEventListener("submit", async (e) => {
       e.preventDefault();
