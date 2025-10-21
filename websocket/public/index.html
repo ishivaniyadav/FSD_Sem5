@@ -174,7 +174,7 @@
       currentUser = e.target.value;
     });
 
-    ws.onopen = () => console.log("✅ Connected to WebSocket server");
+    ws.onopen = () => console.log("Connected to WebSocket server");
 
     ws.onmessage = (event) => {
       const data = event.data;
