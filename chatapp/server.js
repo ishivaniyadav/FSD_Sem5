@@ -141,7 +141,6 @@ io.on("connection", (socket) => {
     }
   });
 });
-
 // fallback for SPA
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
