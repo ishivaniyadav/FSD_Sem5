@@ -26,7 +26,6 @@ const sessionMiddleware = session({
   saveUninitialized: false
 });
 app.use(sessionMiddleware);
-
 io.use((socket, next) => {
   sessionMiddleware(socket.request, {}, next);
 });
